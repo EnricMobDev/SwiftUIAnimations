@@ -10,14 +10,33 @@ import SwiftUI
 
 struct TabBar: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        
+        TabView {
+            Home().tabItem({
+                    Image("IconHome")
+                    Text("Home")
+                })
+            ContentView().tabItem({
+                    Image("IconCards")
+                    Text("Certificates")
+                })
+            Settings().tabItem({
+                    Image("IconSettings")
+                    Text("Settings")
+                })
+        }
     }
 }
 
 #if DEBUG
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        Group {
+            TabBar()
+            TabBar()
+                .environment(\.colorScheme, .dark)
+                .environment(\.sizeCategory, .extraLarge)
+        }
     }
 }
 #endif
